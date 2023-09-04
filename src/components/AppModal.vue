@@ -29,7 +29,22 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+}
 
+@media screen and (max-width: 992px) {
+  .modal {
+    &__box{
+      min-width: auto;
+      max-width: 70vw;
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  .modal{
+    &__box{
+      padding: 30px;
+    }
   }
 }
 </style>

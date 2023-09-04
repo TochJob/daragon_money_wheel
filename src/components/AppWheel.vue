@@ -1,6 +1,6 @@
 <script setup>
 import AppArrow from '@/components/AppArrow.vue'
-import { ref, defineEmits, defineProps } from 'vue'
+import { ref } from 'vue'
 
 const props = defineProps({
   wellClass: String,
@@ -37,7 +37,8 @@ function spin() {
   position: relative;
   justify-content: center;
   &__wheel {
-    width: 51%;
+    width: 980px;
+    // width: 51%;
   }
   &__arrow {
     position: absolute;
@@ -59,12 +60,12 @@ function spin() {
     color: #fe8f16;
     text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
     font-family: 'Exo 2';
-    font-size: calc(14px + 22 * (100vw / 1920));
-
+    font-size: 36px;
+    // font-size: calc(14px + 22 * (100vw / 1920));
     font-weight: 900;
     border: none;
-    width: 12vw;
-    height: 12vw;
+    width: 224px;
+    height: 224px;
     cursor: pointer;
     transition: all 0.3s;
     &:hover {
@@ -84,17 +85,31 @@ function spin() {
     animation: 4s secondSpin ease-out forwards;
   }
 }
-@media screen and (max-width: 1200px) {
+
+@media screen and (max-width: 768px) {
   .wheel {
-    &__button {
-      font-size: calc(14px + 9 * (100vw / 1920));
+    &__wheel {
+      width: 140%;
     }
-    &__arrow{
-      width: 50px;
+    &__button {
+      width: 24vw;
+      height: 24vw;
+      font-size: calc(14px + 22 * (100vw / 1920));
     }
   }
 }
-@media screen and (max-width: 768px) {
-
+@media screen and (max-width: 480px) {
+  .wheel{
+    &__arrow{
+      width: 48px;
+      height: 56px;
+    }
+    &__button{
+      width: 98px;
+      height: 98px;
+      font-size: 16px;
+    }
+  }
 }
+
 </style>

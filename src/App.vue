@@ -1,7 +1,8 @@
 <script setup>
 import Appwheel from '@/components/Appwheel.vue'
-import AppModal from './components/AppModal.vue'
-import { ref } from 'vue'
+import AppModal from '@/components/AppModal.vue'
+import AppFooter from '@/components/AppFooter.vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const title = ref('Поздравляем!')
 const subtitle = ref('Вы выиграли еще одно вращение колеса!')
@@ -11,6 +12,25 @@ const childClass = ref('waiting')
 const isButtonDisabled = ref(false)
 
 const isFirstTry = ref(true)
+
+const screenWidth = ref(window.innerWidth)
+const screenHeight = ref(window.innerHeight)
+
+// Обновление размеров при изменении размеров окна
+const updateScreenSize = () => {
+  screenWidth.value = window.innerWidth
+  screenHeight.value = window.innerHeight
+}
+
+// Добавляем слушатель при монтировании компонента
+onMounted(() => {
+  window.addEventListener('resize', updateScreenSize)
+})
+
+// Удаляем слушатель при размонтировании компонента
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateScreenSize)
+})
 
 function firstSpin() {
   childClass.value = 'spin'
@@ -39,7 +59,6 @@ function submit() {
 
 <template>
   <section class="main">
-    <img class="main__hidden" src="/bg/background.png" alt="background" />
     <div class="main__mock">
       <div class="main__logo">
         <img src="./assets/logo.png" alt="dragonmoney" />
@@ -52,7 +71,11 @@ function submit() {
           @firstSpin="firstSpin"
           @firstSpinDone="firstSpinDone"
         />
-        <img class="main__bg" src="@/assets/Art.png" alt="art" />
+        <img
+          class="main__bg"
+          :src="screenWidth > 480 ? '/Art.png' : '/Art__mobile.png'"
+          alt="art"
+        />
       </div>
     </div>
     <AppModal class="main__modal" v-if="isModalVisible">
@@ -61,16 +84,56 @@ function submit() {
       <button class="main__button" @click="isFirstTry ? reroll() : submit()">{{ btn }}</button>
     </AppModal>
   </section>
+  <AppFooter />
 </template>
 
 <style lang="scss">
 @import '@/assets/scss/reset.scss';
+#app {
+  overflow: hidden;
+}
+section,
+header,
+footer {
+  padding: 0 15px;
+}
 
+@media (min-width: 575.98px) {
+  section,
+  header,
+  footer {
+    padding: 0 calc(50vw - 270px);
+  }
+}
+
+@media (min-width: 767.98px) {
+  section,
+  header,
+  footer {
+    padding: 0 calc(50vw - 360px);
+  }
+}
+
+@media (min-width: 991.98px) {
+  section,
+  header,
+  footer {
+    padding: 0 calc(50vw - 480px);
+  }
+}
+
+@media (min-width: 1199.98px) {
+  section,
+  header,
+  footer {
+    padding: 0 calc(50vw - 590px);
+  }
+}
 .main {
   position: relative;
   background-image: url('/bg/background.png');
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-position: center top;
   padding-top: 32px;
   &__hidden {
     height: 1px;
@@ -79,8 +142,10 @@ function submit() {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 5%;
     img {
-      width: 10vw;
+      width: 192px;
+      // width: 10vw;
     }
   }
   &__wheel {
@@ -90,14 +155,12 @@ function submit() {
     transform: translate(-50%, 0);
     z-index: 1;
   }
-  &__mock {
-    width: 100%;
-  }
   &__bg {
-    width: 100%;
+    min-width: 100%;
     position: absolute;
-    left: 0%;
+    left: 50%;
     top: 10%;
+    transform: translate(-50%);
   }
   &__title {
     color: #181a25;
@@ -132,8 +195,57 @@ function submit() {
   }
 }
 
+@media screen and (max-width: 992px) {
+  .main{
+    &__title{
+      font-size: calc(15px + 56 * (100vw / 1920)) ;
+    }
+    &__text{
+      font-size: calc(10px + 26 * (100vw / 1920));
+    }
+    &__button{
+      font-size: calc(13px + 19 * (100vw / 1920));
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .main {
+    background-position: center bottom;
+
+    &__bg {
+      min-width: auto;
+      width: 235%;
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  .main{
+    &__text{
+      margin: 10px 0 25px;
+    }
+  }
+}
 @media screen and (max-width: 480px) {
   .main {
+    background-image: url('/bg/background.png');
+    &__bg {
+      top: 16%;
+      width: auto;
+    }
+    &__logo {
+      margin-bottom: 40px;
+      img {
+        width: 108px;
+      }
+    }
+    &__button{
+      min-width: auto;
+      width: 100%;
+      padding: 8px 0;
+    }
+    &__wheel {
+      top: -30px;
+    }
   }
 }
 </style>
