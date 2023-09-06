@@ -37,12 +37,12 @@ function spin() {
   position: relative;
   justify-content: center;
   &__wheel {
-    width: 980px;
+    width: 688px;
     // width: 51%;
   }
   &__arrow {
     position: absolute;
-    top: 8%;
+    top: -6%;
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 1;
@@ -56,7 +56,8 @@ function spin() {
     background: #f6f3f3;
     box-shadow:
       0px 14px 7px 0px #fff inset,
-      0px -12px 12px 0px rgba(0, 0, 0, 0.25) inset;
+      0px -12px 12px 0px rgba(0, 0, 0, 0.25) inset,
+      0px 0px 24px 0px rgba(0, 0, 0, 0.72);
     color: #fe8f16;
     text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25);
     font-family: 'Exo 2';
@@ -68,12 +69,6 @@ function spin() {
     height: 224px;
     cursor: pointer;
     transition: all 0.3s;
-    &:hover {
-      box-shadow:
-        0px 14px 7px 0px #fff inset,
-        0px -12px 12px 0px rgba(0, 0, 0, 0.25) inset,
-        0px 0px 24px 0px rgba(0, 0, 0, 0.72);
-    }
   }
   .waiting {
     animation: rest 3s infinite alternate;
@@ -89,27 +84,33 @@ function spin() {
 @media screen and (max-width: 768px) {
   .wheel {
     &__wheel {
-      width: 140%;
+      width: 100%;
     }
     &__button {
       width: 24vw;
       height: 24vw;
-      font-size: calc(14px + 22 * (100vw / 1920));
+      font-size: calc(20px + 22 * (100vw / 1920));
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  .wheel {
+    &__wheel {
+      width: 80%;
     }
   }
 }
 @media screen and (max-width: 480px) {
-  .wheel{
-    &__arrow{
+  .wheel {
+    &__arrow {
       width: 48px;
       height: 56px;
     }
-    &__button{
+    &__button {
       width: 98px;
       height: 98px;
       font-size: 16px;
     }
   }
 }
-
 </style>

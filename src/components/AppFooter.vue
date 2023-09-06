@@ -61,13 +61,25 @@ const coins = ['bit.png', 'lite.png', 'eth.png'];
     gap: 31px;
   }
 }
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
   .footer{
-    margin-top: -20%;
+    margin-top: -170px;
   }
 }
+@media (max-width: 992px) {
+  .footer{
+    margin-top: -15%;
+  }
+}
+@media (max-width: 768px) {
+  .footer{
+    margin-top: -18%;
+  }
+}
+
 @media (max-width: 680px) {
   .footer{
+    margin-top: -21%;
     .wallets{
       gap: 5px;
     }

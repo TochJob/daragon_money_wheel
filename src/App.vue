@@ -53,7 +53,7 @@ function reroll() {
 }
 
 function submit() {
-  console.log('submit')
+  window.location.href = 'https://drgnreturn.com/'
 }
 </script>
 
@@ -135,6 +135,8 @@ footer {
   background-repeat: no-repeat;
   background-position: center top;
   padding-top: 32px;
+  padding-bottom: 150px;
+
   &__hidden {
     height: 1px;
   }
@@ -142,9 +144,10 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 5%;
+    margin-bottom: 17%;
     img {
       width: 192px;
+    z-index: 1;
       // width: 10vw;
     }
   }
@@ -196,14 +199,14 @@ footer {
 }
 
 @media screen and (max-width: 992px) {
-  .main{
-    &__title{
-      font-size: calc(15px + 56 * (100vw / 1920)) ;
+  .main {
+    &__title {
+      font-size: calc(15px + 56 * (100vw / 1920));
     }
-    &__text{
+    &__text {
       font-size: calc(10px + 26 * (100vw / 1920));
     }
-    &__button{
+    &__button {
       font-size: calc(13px + 19 * (100vw / 1920));
     }
   }
@@ -219,8 +222,8 @@ footer {
   }
 }
 @media screen and (max-width: 576px) {
-  .main{
-    &__text{
+  .main {
+    &__text {
       margin: 10px 0 25px;
     }
   }
@@ -233,12 +236,12 @@ footer {
       width: auto;
     }
     &__logo {
-      margin-bottom: 40px;
+      margin-bottom: 95px;
       img {
         width: 108px;
       }
     }
-    &__button{
+    &__button {
       min-width: auto;
       width: 100%;
       padding: 8px 0;
