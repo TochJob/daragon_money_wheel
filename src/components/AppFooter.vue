@@ -1,19 +1,36 @@
+<script setup>
+import { ref } from 'vue';
+const wallets = ['plast', 'visa', 'p2p', 'fk', 'ym'];
+const coins = ['bit', 'lite', 'eth'];
+let walletsArr = []
+let coinsArr = []
+for(let item of wallets){
+  const path = new URL(`../assets/img/wallets/${item}.png`, import.meta.url).href
+  walletsArr.push(path)
+}
+for(let item of coins){
+  const path = new URL(`../assets/img/coins/${item}.png`, import.meta.url).href
+  coinsArr.push(path)
+}
+
+</script>
+
 <template>
   <footer class="footer">
     <div class="footer__box">
       <div class="wrapper footer__wallets wallets">
         <img
-          v-for="(item, index) of wallets"
+          v-for="(item, index) of walletsArr"
           :key="index"
-          :src="`/img/wallets/${item}`"
+          :src="item"
           alt="wallet"
         />
       </div>
       <div class="wrapper footer__wallets coins">
         <img
-          v-for="(item, index) of coins"
+          v-for="(item, index) of coinsArr"
           :key="index"
-          :src="`/img/coins/${item}`"
+          :src="item"
           alt="coin"
         />
       </div>
@@ -22,10 +39,7 @@
   </footer>
 </template>
 
-<script setup>
-const wallets = ['plast.png', 'visa.png', 'p2p.png', 'fk.png', 'ym.png'];
-const coins = ['bit.png', 'lite.png', 'eth.png'];
-</script>
+
 
 <style lang="scss" scoped>
 .footer {

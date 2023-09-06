@@ -71,11 +71,9 @@ function submit() {
           @firstSpin="firstSpin"
           @firstSpinDone="firstSpinDone"
         />
-        <img
-          class="main__bg"
-          :src="screenWidth > 480 ? '/Art.png' : '/Art__mobile.png'"
-          alt="art"
-        />
+
+        <img v-if="screenWidth > 480" class="main__bg" src="@/assets/Art.png" alt="art" />
+        <img v-else class="main__bg" src="@/assets/Art__mobile.png" alt="art" />
       </div>
     </div>
     <AppModal class="main__modal" v-if="isModalVisible">
@@ -147,7 +145,7 @@ footer {
     margin-bottom: 17%;
     img {
       width: 192px;
-    z-index: 1;
+      z-index: 1;
       // width: 10vw;
     }
   }
