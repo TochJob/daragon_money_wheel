@@ -1,45 +1,31 @@
 <script setup>
-import { ref } from 'vue';
-const wallets = ['plast', 'visa', 'p2p', 'fk', 'ym'];
-const coins = ['bit', 'lite', 'eth'];
+const wallets = ['plast', 'visa', 'p2p', 'fk', 'ym']
+const coins = ['bit', 'lite', 'eth']
 let walletsArr = []
 let coinsArr = []
-for(let item of wallets){
+for (let item of wallets) {
   const path = new URL(`../assets/img/wallets/${item}.png`, import.meta.url).href
   walletsArr.push(path)
 }
-for(let item of coins){
+for (let item of coins) {
   const path = new URL(`../assets/img/coins/${item}.png`, import.meta.url).href
   coinsArr.push(path)
 }
-
 </script>
 
 <template>
   <footer class="footer">
     <div class="footer__box">
       <div class="wrapper footer__wallets wallets">
-        <img
-          v-for="(item, index) of walletsArr"
-          :key="index"
-          :src="item"
-          alt="wallet"
-        />
+        <img v-for="(item, index) of walletsArr" :key="index" :src="item" alt="wallet" />
       </div>
       <div class="wrapper footer__wallets coins">
-        <img
-          v-for="(item, index) of coinsArr"
-          :key="index"
-          :src="item"
-          alt="coin"
-        />
+        <img v-for="(item, index) of coinsArr" :key="index" :src="item" alt="coin" />
       </div>
     </div>
     <p class="footer__licence">© 2023 Dragon Money. All rights reserved</p>
   </footer>
 </template>
-
-
 
 <style lang="scss" scoped>
 .footer {
@@ -76,31 +62,31 @@ for(let item of coins){
   }
 }
 @media (max-width: 1200px) {
-  .footer{
+  .footer {
     margin-top: -170px;
   }
 }
 @media (max-width: 992px) {
-  .footer{
+  .footer {
     margin-top: -15%;
   }
 }
 @media (max-width: 768px) {
-  .footer{
+  .footer {
     margin-top: -18%;
   }
 }
 
 @media (max-width: 680px) {
-  .footer{
+  .footer {
     margin-top: -21%;
-    .wallets{
+    .wallets {
       gap: 5px;
     }
   }
 }
 @media (max-width: 576px) {
-  .footer{
+  .footer {
     padding: 120px 0 15px;
     gap: 40px;
     .wallets {
@@ -144,7 +130,7 @@ for(let item of coins){
   .footer {
     gap: 33px;
     margin-top: -24%;
-    &__box{
+    &__box {
       gap: 8px;
     }
     .wallets {
@@ -182,7 +168,7 @@ for(let item of coins){
         }
       }
     }
-    &__licence{
+    &__licence {
       font-size: 7px;
     }
   }
