@@ -72,7 +72,7 @@ function submit() {
           @firstSpinDone="firstSpinDone"
         />
 
-        <img v-if="screenWidth > 480" class="main__bg" src="@/assets/Art.png" alt="art" />
+        <img v-if="screenWidth > 330" class="main__bg" src="@/assets/Art.png" alt="art" />
         <img v-else class="main__bg" src="@/assets/Art__mobile.png" alt="art" />
       </div>
     </div>
@@ -229,10 +229,7 @@ footer {
 @media screen and (max-width: 480px) {
   .main {
     background-image: url('/bg/background.png');
-    &__bg {
-      top: 16%;
-      width: auto;
-    }
+    
     &__logo {
       margin-bottom: 95px;
       img {
@@ -244,8 +241,19 @@ footer {
       width: 100%;
       padding: 8px 0;
     }
+    &__bg{
+      top: 15%;
+    }
     &__wheel {
-      top: -30px;
+      top: -20px;
+    }
+  }
+}
+@media screen and (max-width: 330px){
+  .main{
+    &__bg {
+      top: 16%;
+      width: auto ;
     }
   }
 }

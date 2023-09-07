@@ -89,7 +89,11 @@ function spin() {
     &__button {
       width: 24vw;
       height: 24vw;
-      font-size: calc(20px + 22 * (100vw / 1920));
+      font-size: calc(17px + 22 * (100vw / 1920));
+    }
+    &__arrow {
+      width: 68px;
+      height: 76px;
     }
   }
 }
@@ -102,10 +106,22 @@ function spin() {
 }
 @media screen and (max-width: 480px) {
   .wheel {
+    &__wheel {
+      width: 100%;
+    }
     &__arrow {
       width: 48px;
       height: 56px;
     }
+    &__button {
+      width: 130px;
+      height: 130px;
+      font-size: 21px;
+    }
+  }
+}
+@media screen and (max-width: 360px) {
+  .wheel {
     &__button {
       width: 98px;
       height: 98px;
