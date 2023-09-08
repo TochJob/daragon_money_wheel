@@ -1,9 +1,9 @@
 @keyframes rest {
   from {
-    transform: rotate(0deg);
+    transform: rotate(-28deg);
   }
   to {
-    transform: rotate(5deg);
+    transform: rotate(-32deg);
   }
 }
 @keyframes firstSpin {
@@ -11,7 +11,7 @@
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(1200deg);
+    transform: rotate(1150deg);
   }
 }
 
@@ -21,6 +21,6 @@
     transform: rotate(1200deg);
   }
   to {
-    transform: rotate(2550deg);
+    transform: rotate(2530deg);
   }
 }

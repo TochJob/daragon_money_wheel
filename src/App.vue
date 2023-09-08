@@ -49,7 +49,7 @@ function reroll() {
     subtitle.value = 'Вы получаете 500 монет за выполнение заданий и еженедельный кэшбек 10%!'
     btn.value = 'Забрать'
     isModalVisible.value = true
-  }, 4000)
+  }, 4500)
 }
 
 function submit() {

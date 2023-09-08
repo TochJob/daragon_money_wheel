@@ -38,7 +38,7 @@ function spin() {
   justify-content: center;
   &__wheel {
     width: 688px;
-    // width: 51%;
+    transform: r;
   }
   &__arrow {
     position: absolute;
